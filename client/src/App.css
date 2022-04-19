@@ -330,6 +330,9 @@ button {
 
 
 /* logo */
+.logo-container {
+	display:flex;
+}
 .logo {
 	position: relative;
 	margin: 0 auto;

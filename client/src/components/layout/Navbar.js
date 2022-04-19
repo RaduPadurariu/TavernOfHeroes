@@ -7,7 +7,7 @@ const Navbar = () => {
 	return (
 		<div>
 			<nav className="navbar bg-primary">
-				<h1>
+				<div className='logo-container'>
 					<div className='logo'>
 						<div className='chain'>
 							<div className='chainLink'></div>
@@ -16,8 +16,10 @@ const Navbar = () => {
 							<div className='chainHook'></div>
 						</div>
 					</div>
-					<Link to="/index">Tavern of Heroes</Link>
-				</h1>
+					<h1>
+						<Link to="/index">Tavern of Heroes</Link>
+					</h1>
+				</div>
 				<ul>
 					<li>
 						<Link to="/">
