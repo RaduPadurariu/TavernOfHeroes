@@ -8,6 +8,14 @@ const Navbar = () => {
 		<div>
 			<nav className="navbar bg-primary">
 				<h1>
+					<div className='logo'>
+						<div className='chain'>
+							<div className='chainLink'></div>
+							<div className='chainLink'></div>
+							<div className='chainSupport'></div>
+							<div className='chainHook'></div>
+						</div>
+					</div>
 					<Link to="/index">Tavern of Heroes</Link>
 				</h1>
 				<ul>
