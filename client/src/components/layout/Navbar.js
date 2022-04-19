@@ -8,7 +8,7 @@ const Navbar = () => {
 		<div>
 			<nav className="navbar bg-primary">
 				<h1>
-					<Link to="/index">SociaL in</Link>
+					<Link to="/index">Tavern of Heroes</Link>
 				</h1>
 				<ul>
 					<li>
