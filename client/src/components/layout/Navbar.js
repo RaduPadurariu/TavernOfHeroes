@@ -3,17 +3,20 @@ import { AiFillHome, AiOutlineLogin } from 'react-icons/ai';
 import { MdOutlineAccountBox } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () => {
 	return (
 		<div>
 			<nav className="navbar bg-primary">
 				<div className='logo-container'>
-					<div className='logo'>
+					<div className='logo-position'>
 						<div className='chain'>
 							<div className='chainLink'></div>
 							<div className='chainLink'></div>
 							<div className='chainSupport'></div>
 							<div className='chainHook'></div>
+							
+							<Link className='logo-img' to="/index"></Link>
 						</div>
 					</div>
 					<h1>
