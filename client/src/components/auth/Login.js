@@ -36,40 +36,42 @@ const Login = () => {
 	return (
 		<div className="container">
 			<h1 className="large text-primary">Sign in</h1>
-			<p className="lead">
-				<FaUserAlt /> Sing Into your account
-			</p>
-			<form className="form" onSubmit={(e) => submitHandler(e)}>
-				<div className="form-group">
-					<input
-						type="email"
-						placeholder="Email Address"
-						name="email"
-						value={email}
-						onChange={(e) =>
-							setFormData({ ...formData, email: e.target.value })
-						}
-						required
-						autocomplete="on"
-					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="password"
-						placeholder="Password"
-						name="password"
-						value={password}
-						onChange={(e) =>
-							setFormData({ ...formData, password: e.target.value })
-						}
-						minLength="6"
-					/>
-				</div>
-				<input type="submit" className="btn btn-primary" value="Login" />
-			</form>
-			<p className="my-1">
-				Don't have an account? <Link to="/register">Sign Up</Link>
-			</p>
+			<div className='secondary-container'>
+				<p className="lead">
+					<FaUserAlt /> Sing Into your account
+				</p>
+				<form className="form" onSubmit={(e) => submitHandler(e)}>
+					<div className="form-group">
+						<input
+							type="email"
+							placeholder="Email Address"
+							name="email"
+							value={email}
+							onChange={(e) =>
+								setFormData({ ...formData, email: e.target.value })
+							}
+							required
+							autocomplete="on"
+						/>
+					</div>
+					<div className="form-group">
+						<input
+							type="password"
+							placeholder="Password"
+							name="password"
+							value={password}
+							onChange={(e) =>
+								setFormData({ ...formData, password: e.target.value })
+							}
+							minLength="6"
+						/>
+					</div>
+					<input type="submit" className="btn btn-primary" value="Login" />
+				</form>
+				<p className="my-1">
+					Don't have an account? <Link to="/register">Sign Up</Link>
+				</p>
+			</div>
 		</div>
 	);
 };

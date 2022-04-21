@@ -19,10 +19,8 @@ const Navbar = () => {
 							<Link className='logo-img' to="/index"></Link>
 						</div>
 					</div>
-					<h1>
-						<Link to="/index">Tavern of Heroes</Link>
-					</h1>
 				</div>
+
 				<ul>
 					<li>
 						<Link to="/">

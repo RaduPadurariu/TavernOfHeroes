@@ -9,11 +9,17 @@ const App = () => (
 	<Router>
 		<div className="App">
 			<Navbar />
-			<Route exact path="/" component={Landing} />
-			<Switch>
-				<Route exact path="/register" component={Register} />
-				<Route exact path="/login" component={Login} />
-			</Switch>
+			<div className='content'>
+				
+				<Route exact path="/" component={Landing} />
+				<Switch>
+					<Route exact path="/register" component={Register} />
+					<Route exact path="/login" component={Login} />
+				</Switch>
+				
+			</div>
+			<h3 className='footer'>@ copywrite 2022 - Radu Padurariu</h3>
+			
 		</div>
 	</Router>
 );
