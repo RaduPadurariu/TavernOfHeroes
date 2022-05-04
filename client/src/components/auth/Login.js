@@ -51,7 +51,7 @@ const Login = () => {
 								setFormData({ ...formData, email: e.target.value })
 							}
 							required
-							autocomplete="off"
+							autocomplete="on"
 						/>
 					</div>
 					<div className="form-group">
