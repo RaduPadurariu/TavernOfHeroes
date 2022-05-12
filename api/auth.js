@@ -6,6 +6,7 @@ import 'dotenv/config';
 
 import User from '../models/User.js';
 import auth from '../middleware/auth.js';
+import { response } from 'express';
 
 const router = express.Router();
 
@@ -13,7 +14,18 @@ const router = express.Router();
 // @description   Test route
 // @access        Public
 
-router.get('/', auth, (req, res) => res.send('Test auth route'));
+// router.get('/', auth, (req, res) => res.send('Test auth route'));
+router.get('/', auth, async (req, res) => {
+	try { 
+		const user = await User.findById(req.user.id).select('-password');
+		res.json(user);
+		
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).send('Server error');
+		
+	}
+})
 
 // @route         POST api/auth
 // @description   Login registered user
@@ -47,6 +59,12 @@ router.post(
 
 			const isValidPassword = await bcryptjs.compare(password, user.password);
 
+			if (!isValidPassword) {
+				return res
+					.status(400)
+					.json({errors: [{msg: "Password doesn't match"}]});
+			}
+
 			//json web token
 			const payload = {
 				user: {
@@ -64,7 +82,10 @@ router.post(
 					return res.json({ token: token });
 				}
 			);
-		} catch (error) {}
+		} catch (error) {
+			console.log(error.message);
+			response.status(500).send('Server error');
+		}
 	}
 );
 

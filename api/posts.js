@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.post(
 	'/',
-	[auth, [check('text', 'Post content required').not().isEmpty()]],
+	[auth, [check('title', 'Post title is required').not().isEmpty(), check('text', 'Post content required').not().isEmpty()]],
 	async (req, res) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
@@ -23,8 +23,9 @@ router.post(
 		}
 
 		try {
-			const user = await User.findById(req.user.id);
+			const user = await User.findById(req.user.id).select('-password');
 			const post = new Post({
+				title: req.body.title,
 				text: req.body.text,
 				name: user.name,
 				avatar: user.avatar,
@@ -34,43 +35,46 @@ router.post(
 			console.log('post = ', post);
 
 			const newPost = await post.save();
-			res.status(201).json({ post: newPost });
-		} catch (error) {}
+			return res.status(201).json({ post: newPost });
+		} catch (error) {
+			console.error(error.message);
+			res.status(500).send('Posts error');
+		}
 	}
 );
 
 // @route         GET api/posts
 // @description   Fetch all posts
 // @access        Private - only logged in users can see all posts from all users
-router.get('/', async (request, response) => {
+router.get('/', auth, async (req, res) => {
 	// sort the post descending by added date
 	try {
 		const posts = await Post.find().sort({ date: -1 });
-		response.json(posts);
+		res.json(posts);
 	} catch (error) {
 		console.error(error.message);
-		response.status(500).send('Server error');
+		res.status(500).send('Server error');
 	}
 });
 
 // @route         GET api/posts/:id
 // @description   Get post by id
 // @access        Private - only logged in users can see all posts from all users
-router.get('/:post_id', auth, async (request, response) => {
+router.get('/:post_id', auth, async (req, res) => {
 	// sort the post desceding by added date
 	try {
-		const post = await Post.findById(request.params.post_id);
+		const post = await Post.findById(req.params.post_id);
 
 		if (!post) {
-			return response.status(404).json({ msg: 'Post not found' });
+			return res.status(404).json({ msg: 'Post not found' });
 		}
 
-		response.json(post);
+		res.json(post);
 	} catch (error) {
 		console.error(error.message);
 		// check if the id is in correct format
 		if (error.kind == 'ObjectId') {
-			return response.status(404).json({ msg: 'Post not found' });
+			return res.status(404).json({ msg: 'Post not found' });
 		}
 		response.status(500).send('Server error');
 	}
@@ -130,29 +134,29 @@ router.put(
 // @route         DELETE api/posts/:id
 // @description   Delete post by id
 // @access        Private - only logged in users can see all posts from all users
-router.delete('/:post_id', auth, async (request, response) => {
+router.delete('/:post_id', auth, async (req, res) => {
 	// sort the post desceding by added date
 	try {
-		const post = await Post.findById(request.params.post_id);
+		const post = await Post.findById(req.params.post_id);
 
 		// check if the user that delete the post is the owner
 		// post.user is not of type string, but ObjectId
-		if (post.user.toString() !== request.user.id) {
-			return response
+		if (post.user.toString() !== req.user.id) {
+			return res
 				.status(401)
 				.json({ msg: 'User not authorized to delete the post' });
 		}
 
 		await post.remove();
 
-		response.json({ msg: 'Post removed' });
+		res.json({ msg: 'Post removed' });
 	} catch (error) {
 		console.error(error.message);
 		// check if the id is in correct format
 		if (error.kind == 'ObjectId') {
-			return response.status(404).json({ msg: 'Post not found' });
+			return res.status(404).json({ msg: 'Post not found' });
 		}
-		response.status(500).send('Server error');
+		res.status(500).send('Server error');
 	}
 });
 

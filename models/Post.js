@@ -6,6 +6,10 @@ const postSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 	},
+	title: {
+		type: String,
+		required: true,
+	},
 	text: {
 		type: String,
 		required: true,
@@ -21,14 +25,32 @@ const postSchema = mongoose.Schema({
 		{
 			user: {
 				type: mongoose.Schema.Types.ObjectId,
-				ref: 'User',
+				ref: 'users',
 			},
 		},
 	],
-	date: {
-		type: Date,
-		default: Date.now,
-	},
+	comments: [
+		{
+			user: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'users',
+			},
+			text: {
+				type: String,
+				required: true,
+			},
+			name: {
+				type: String,
+			},
+			avatar: {
+				type: String,
+			},
+			date: {
+				type: Date,
+				default: Date.now,
+			},
+		},
+	],
 });
 
 export default mongoose.model('Post', postSchema);

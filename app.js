@@ -2,6 +2,7 @@ import express from 'express';
 import authRouter from './api/auth.js';
 import postsRouter from './api/posts.js';
 import usersRouter from './api/users.js';
+import profileRouter from './api/profile.js';
 
 import 'dotenv/config';
 import mongoose from 'mongoose';
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/profile', profileRouter)
 
 // heroku special env
 console.log(process.env.NODE_ENV);
