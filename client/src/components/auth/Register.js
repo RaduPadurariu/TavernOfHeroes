@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = (props) => {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -16,6 +19,7 @@ const Register = () => {
 		e.preventDefault();
 		if (password !== confirmationPassword) {
 			console.log('Passwords do not match');
+			props.setAlert('Passwords do not match', 'danger', 3000);
 		} else {
 			const user = {
 				name,
@@ -83,7 +87,7 @@ const Register = () => {
 								setFormData({ ...formData, password: e.target.value })
 							}
 							minLength="6"
-							autocomplete="on"
+							autoComplete="on"
 						/>
 					</div>
 					<div className="form-group">
@@ -96,7 +100,7 @@ const Register = () => {
 								setFormData({ ...formData, confirmationPassword: e.target.value })
 							}
 							minLength="6"
-							autocomplete="on"
+							autoComplete="on"
 						/>
 					</div>
 					<input type="submit" className="btn btn-primary" value="Register" />
@@ -109,4 +113,7 @@ const Register = () => {
 	);
 };
 
-export default Register;
+Register.propTypes = {
+	setAlert: PropTypes.func.isRequired,
+};
+export default connect(null, { setAlert })(Register);
