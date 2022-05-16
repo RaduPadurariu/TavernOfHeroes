@@ -5,9 +5,12 @@ import { BiEditAlt } from 'react-icons/bi';
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
 
 
-const Navbar = ({isAuthenticated, loading, logout}) => {
+const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
 	if (loading) {
 		return <Spinner />;
 	}
@@ -83,4 +86,13 @@ const Navbar = ({isAuthenticated, loading, logout}) => {
 };
 
 
-export default Navbar;
+Navbar.propTypes = {
+	logout: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

@@ -17,13 +17,6 @@ const Login = ({ login, isAuthenticated}) => {
 		login({ email, password });
 	};
 
-	// // redirect when user is logged in -- react router Redirect to
-	// console.log('isAuthenticated ', isAuthenticated);
-	// if (isAuthenticated) {
-	// 	console.log('salut');
-	// 	return <Redirect to="/home" />;
-	// }
-
 	return isAuthenticated ? (
 		<Redirect to="/home" />
 	) : (
