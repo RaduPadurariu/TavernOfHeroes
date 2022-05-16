@@ -26,7 +26,7 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
 
 	// redirect when user is logged in -- react router Redirect to
 	if (isAuthenticated) {
-		<Redirect to="/home" />;
+		<Redirect to="/posts" />;
 	}
 
 	return (
