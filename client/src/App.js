@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
 import Landing from '../src/components/layout/Landing';
 import Register from './components/auth/Register';
@@ -15,10 +15,6 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 
-if (localStorage.token) {
-	setAuthToken(localStorage.token);
-}
-
 
 const App = () => {
 	// put the second parameter [arr of states] to run only once when component did mount
@@ -28,32 +24,32 @@ const App = () => {
 		}
 	}, []);
 	return (
-	<Provider store={store}>
-		<Router>
-			<div className="App">
-				<Navbar />
-				<div className='content'>
-					
-					<Route exact path="/" component={Landing} />
-					<Alert />
-					<Switch>
-						<Route exact path="/register" component={Register} />
-						<Route exact path="/login" component={Login} />
-						<PrivateRoute exact path="/account" component={Home} />
-						<PrivateRoute
-							exact
-							path="/create-profile"
-							component={CreateProfile}
-						/>
-						<PrivateRoute exact path="/edit-profile" component={EditProfile} />
-					</Switch>
+		<Provider store={store}>
+			<Router>
+				<div className="App">
+					<Navbar />
+					<div className='content'>
+						
+						<Route exact path="/" component={Landing} />
+						<Alert />
+						<Switch>
+							<Route exact path="/register" component={Register} />
+							<Route exact path="/login" component={Login} />
+							<PrivateRoute exact path="/account" component={Home} />
+							<PrivateRoute
+								exact
+								path="/create-profile"
+								component={CreateProfile}
+							/>
+							<PrivateRoute exact path="/edit-profile" component={EditProfile} />
+						</Switch>
+						
+					</div>
+					<h3 className='footer'>@ copywrite 2022 - Radu Padurariu</h3>
 					
 				</div>
-				<h3 className='footer'>@ copywrite 2022 - Radu Padurariu</h3>
-				
-			</div>
-		</Router>
-	</Provider>);
+			</Router>
+		</Provider>);
 };
 
 export default App;

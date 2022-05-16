@@ -8,7 +8,7 @@ const initialState = {
 	profile: null,
 	profiles: [],
 	repos: [],
-	loading: false,
+	loading: true,
 	error: {},
 };
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import setAuthToken from '../utils/setAuthToken';
+
 
 import {
 	CLEAR_PROFILE,
@@ -11,6 +11,7 @@ import {
 
 // get the current user profile
 export const getCurrentUserProfile = () => async (dispatch) => {
+	// dispatch({ type: CLEAR_PROFILE });
 	try {
 		const response = await axios.get('/api/profile/me');
 		dispatch({
@@ -73,7 +74,7 @@ export const createProfile =
 // delete account
 export const deleteAccount = () => async (dispatch) => {
 	if (
-		window.confirm('Are you sure? You want to permantenly delete your account?')
+		window.confirm('Are you sure? You want to permanently delete your account?')
 	) {
 		try {
 			const response = await axios.delete('/api/profile');
