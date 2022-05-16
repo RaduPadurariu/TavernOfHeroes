@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
-// import { loadUser } from './actions/auth';
+import { loadUser } from './actions/auth';
 import Home from './components/home/Home';
 import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile/CreateProfile';
@@ -22,6 +22,7 @@ const App = () => {
 		if (localStorage.token) {
 			setAuthToken(localStorage.token);
 		}
+		store.dispatch(loadUser());
 	}, []);
 	return (
 		<Provider store={store}>

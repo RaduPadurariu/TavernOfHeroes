@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
 
-const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
+const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
 	if (loading) {
 		return <Spinner />;
 	}
@@ -51,7 +51,7 @@ const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 	const authLinks = (
 		<ul>
 			<li>
-				<Link to="/users">
+				<Link to="/">
 					<FiSearch /> <span className="hide-sm"> Find new friends</span>
 				</Link>
 			</li>
