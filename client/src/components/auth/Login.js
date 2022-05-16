@@ -18,7 +18,7 @@ const Login = ({ login, isAuthenticated}) => {
 	};
 
 	return isAuthenticated ? (
-		<Redirect to="/home" />
+		<Redirect to="/posts" />
 	) : (
 		<div className="container">
 			<h1 className="large text-primary">Sign in</h1>
@@ -64,7 +64,7 @@ const Login = ({ login, isAuthenticated}) => {
 
 Login.propTypes = {
 	login: PropTypes.func.isRequired,
-	isAuthentication: PropTypes.bool,
+	isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,17 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentUserProfile } from '../../actions/profile';
+import { deleteAccount, getCurrentUserProfile } from '../../actions/profile';
+import Spinner from '../layout/Spinner';
+import { loadUser } from '../../actions/auth';
+import { CgHello } from 'react-icons/cg';
+import { Link } from 'react-router-dom';
+import { IoAddCircleOutline } from 'react-icons/io5';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { FiEdit } from 'react-icons/fi';
 
-const Home = ({ getCurrentUserProfile, auth, profile }) => {
+const Home = ({
+	loadUser,
+	getCurrentUserProfile,
+	deleteAccount,
+	auth: { user },
+	profile: { profile, loading },
+}) => {
     useEffect(() => {
+		loadUser();
 		getCurrentUserProfile();
-	}, []);
-	return <div>Home New</div>;
+	}, [getCurrentUserProfile, loadUser]);
+	return loading && profile === null ? (
+		<Spinner />
+	) : (
+		<div className="container">
+			<div className="profile-container">
+				<p className="lead text-dark">
+					<CgHello /> Welcome, {user && user.name}!
+				</p>
+				<Fragment>
+					{profile !== null ? (
+						<Fragment>
+							<Link to="/edit-profile" className="btn btn-dark">
+								<FiEdit /> Edit Profile
+							</Link>
+							<button className="btn btn-danger" onClick={() => deleteAccount()}>
+								<RiDeleteBinLine />
+								Delete Account
+							</button>
+						</Fragment>
+					) : (
+						<Fragment>
+							<Link to="/create-profile" className="btn btn-dark">
+								<IoAddCircleOutline />
+								Create Profile
+							</Link>
+							<button className="btn btn-danger" onClick={() => deleteAccount()}>
+								<RiDeleteBinLine />
+								Delete Account
+							</button>
+						</Fragment>
+					)}
+				</Fragment>
+			</div>
+		</div>
+	);
 };
 
 Home.propTypes = {
+	loadUser: PropTypes.func.isRequired,
 	getCurrentUserProfile: PropTypes.func.isRequired,
+	deleteAccount: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
 	profile: PropTypes.object.isRequired,
 };
@@ -21,4 +71,8 @@ const mapStateToProps = (state) => ({
 	profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentUserProfile })(Home);
+export default connect(mapStateToProps, {
+	loadUser,
+	getCurrentUserProfile,
+	deleteAccount,
+})(Home);

@@ -6,6 +6,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
     LOGOUT,
+	ACCOUNT_DELETED,
 } from '../actions/constants';
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
 	user: null,
 };
 
-const registerState = (state = initialState, action) => {
+const authState = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
 		case REGISTER_SUCCESS:
@@ -27,6 +28,7 @@ const registerState = (state = initialState, action) => {
         case AUTH_ERROR:
 		case LOGIN_FAIL:
         case LOGOUT:
+		case ACCOUNT_DELETED:
 			localStorage.removeItem('token');
 			return { ...state, token: null, isAuthenticated: false, loading: false };
             case USER_LOADED:
@@ -36,4 +38,4 @@ const registerState = (state = initialState, action) => {
 	}
 }
 
-export default registerState;
+export default authState;

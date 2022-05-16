@@ -25,11 +25,9 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
 	};
 
 	// redirect when user is logged in -- react router Redirect to
-	if (isAuthenticated) {
-		<Redirect to="/posts" />;
-	}
-
-	return (
+	return isAuthenticated ? (
+		<Redirect to="/posts" />
+	) : (
 		<div className="container">
 			<h1 className="large text-primary">Sign Up</h1>
 
