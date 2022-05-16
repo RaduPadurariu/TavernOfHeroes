@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
 import Landing from '../src/components/layout/Landing';
@@ -7,8 +8,20 @@ import Login from './components/auth/Login';
 import { Provider } from 'react-redux';
 import store from './store';
 import Alert from './components/layout/Alert';
+import setAuthToken from './utils/setAuthToken';
+import { userLoaded } from './actions/auth';
 
-const App = () => (
+if (localStorage.token) {
+	setAuthToken(localStorage.token);
+}
+
+
+const App = () => {
+	// put the second parameter [arr of states] to run only once when component did mount
+	useEffect(() => {
+		store.dispatch(userLoaded());
+	}, []);
+	return (
 	<Provider store={store}>
 		<Router>
 			<div className="App">
@@ -27,7 +40,7 @@ const App = () => (
 				
 			</div>
 		</Router>
-	</Provider>
-);
+	</Provider>);
+};
 
 export default App;
