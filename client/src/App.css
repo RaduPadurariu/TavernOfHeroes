@@ -410,6 +410,10 @@ button {
 	width:10rem;
 }
 
+.img-small {
+	width: 30px;
+}
+
 .profile {
 	display: flex;
 	/* justify-content: center; */
@@ -435,10 +439,7 @@ button {
 	justify-content: space-between;
 }
 /* Posts Page */
-.post-form .post-form-header {
-	background: var(--primary-color);
-	/* padding: 0.5rem; */
-}
+
 .posts {
 	display:flex;
 	flex-direction: column;
@@ -454,6 +455,14 @@ button {
 	background: var(--light-color);
 	border:1px solid var(--primary-color);
 	border-radius: 5px;
+}
+
+.post-input {
+	background: rgb(247, 243, 243);
+}
+
+.post-input:focus {
+	border-style: none;
 }
 
 .post > div:first-child {
@@ -478,14 +487,27 @@ button {
 .posts .my-1 {
 	margin:0.1rem;
 }
+
+.post-components {
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height:170px;
+	margin:0.3rem 0.6rem;
+}
+
+.my-1 {
+	overflow:auto;
+}
 .post-btns {
 	display:flex;
-	/* justify-content: space-between; */
+	justify-content: space-between;
+	align-items: center;
 }
 .post .comment-count {
 	background: var(--light-color);
 	color: var(--primary-color);
-	padding: 0.1rem 0.2rem;
+	/* padding: 0.1rem 0.2rem; */
 	border-radius: 5px;
 	font-size: 0.8rem;
 	overflow:scroll;
@@ -494,7 +516,12 @@ button {
 .post .post-date {
 	color: var(--primary-color);
 	font-size: 0.8rem;
-	margin-top:1.5rem;
+	
+}
+
+.loggedin-user {
+	display: flex;
+	gap: 10px;
 }
 
 /* logo */

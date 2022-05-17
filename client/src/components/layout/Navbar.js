@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
 
-const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
+const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 	if (loading) {
 		return <Spinner />;
 	}
@@ -84,6 +84,14 @@ const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
 		<div>
 			<nav className="navbar bg-primary">
 				{logo}
+				{isAuthenticated ? (
+					<div className="loggedin-user">
+						<img className="round-img img-small" src={user && user.avatar} alt=""/>
+						<p>{user && user.name}</p>
+					</div>
+				) : (
+					''
+				)}
 				{isAuthenticated ? authLinks : visitorLinks}
 			</nav>
 		</div>

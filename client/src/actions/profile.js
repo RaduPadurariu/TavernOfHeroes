@@ -90,7 +90,7 @@ export const createProfile =
 
 			dispatch(setAlert(edit ? 'Profile Updated' : 'Profile created'));
 			if (!edit) {
-				history.push('/home');
+				history.push('/account');
 			}
 		} catch (error) {
 			const errors = error.response.data.errors;
