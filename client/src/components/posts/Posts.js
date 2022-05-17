@@ -5,16 +5,18 @@ import Spinner from '../layout/Spinner';
 import Post from './Post';
 import { getPosts } from '../../actions/post';
 import { loadUser } from '../../actions/auth';
+import PostInput from './PostInput';
 
-const Posts = ({ loadUser, getPosts, post: { posts, loading } }) => {
+const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
-        loadUser();
+        if (auth.isAuthenticated) loadUser();
 		getPosts();
 	}, [getPosts, loadUser]);
 	return loading ? (
 		<Spinner />
 	) : (
 		<div className="container">
+            <PostInput />
 			<div className="posts">
                 <div>
                         <p className="lead text-primary">Posts</p>
@@ -35,6 +37,7 @@ Posts.propTypes = {
 
 const mapStateToProps = (state) => ({
 	post: state.post,
+    auth: state.auth,
 });
 
 export default connect(mapStateToProps, { loadUser, getPosts })(Posts);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentUserProfile } from '../../actions/profile';
@@ -28,7 +28,7 @@ const EditProfile = ({
 				status: loading || !profile.status ? '' : profile.status,
 			});
 		}
-	}, [loading, getCurrentUserProfile, profile]);
+	}, []);
 
 	const { phoneNumber, city, status, gender, nickname } = formData;
 
@@ -96,9 +96,9 @@ const EditProfile = ({
                         </div>
 
                         <input type="submit" className="btn btn-primary my-1" />
-                        <a className="btn btn-light my-1" href="dashboard.html">
+                        <Link to="posts" className="btn btn-light my-1">
                             Go Back
-                        </a>
+                        </Link>
                     </form>
                 </div>
             </div>

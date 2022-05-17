@@ -30,24 +30,21 @@ const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 	const visitorLinks = (
 				<ul>
 					<li>
-						<Link to="/users">
-							<FiSearch /> Heroes
-						</Link>
-					</li>
-					<li>
 						<Link to="/posts">
-						<BiEditAlt /> Posts
+						<BiEditAlt />
+						<span className="hide-sm">Posts</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/login">
-							<AiOutlineLogin /> Log in
+							<AiOutlineLogin />
+							<span className="hide-sm">Log in</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/register">
 							<MdOutlineAccountBox />
-							Sign up
+							<span className="hide-sm">Sign up</span>
 						</Link>
 					</li>
 				</ul>
@@ -87,7 +84,7 @@ const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 				{isAuthenticated ? (
 					<div className="loggedin-user">
 						<img className="round-img img-small" src={user && user.avatar} alt=""/>
-						<p>{user && user.name}</p>
+						<p className="hide-sm">{user && user.name}</p>
 					</div>
 				) : (
 					''

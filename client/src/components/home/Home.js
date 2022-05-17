@@ -21,7 +21,7 @@ const Home = ({
 		loadUser();
 		getCurrentUserProfile();
 	}, [getCurrentUserProfile, loadUser]);
-	return loading && profile === null ? (
+	return loading ? (
 		<Spinner />
 	) : (
 		<div className="container">

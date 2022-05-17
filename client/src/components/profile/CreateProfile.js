@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
@@ -41,9 +41,10 @@ const CreateProfile = ({ createProfile, history }) => {
                         <div className="form-group">
                         <select
                                 name="gender"
+                                required
                                 value={gender}
                                 onChange={(e) => changeHandler(e)}
-                            >
+                            >   
                                 <option value="0">* Select Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -80,9 +81,9 @@ const CreateProfile = ({ createProfile, history }) => {
                         </div>
 
                         <input type="submit" className="btn btn-primary my-1" />
-                        <a className="btn btn-light my-1" href="dashboard.html">
+                        <Link className="btn btn-light my-1" to="/posts">
                             Go Back
-                        </a>
+                        </Link>
                     </form>
                  </div>   
             </div>

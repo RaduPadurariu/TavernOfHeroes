@@ -46,7 +46,7 @@ router.post(
 // @route         GET api/posts
 // @description   Fetch all posts
 // @access        Private - only logged in users can see all posts from all users
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
 	// sort the post descending by added date
 	try {
 		const posts = await Post.find().sort({ date: -1 });
@@ -56,6 +56,8 @@ router.get('/', auth, async (req, res) => {
 		res.status(500).send('Server error');
 	}
 });
+
+
 
 // @route         GET api/posts/:id
 // @description   Get post by id

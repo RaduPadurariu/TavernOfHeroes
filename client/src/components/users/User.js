@@ -5,33 +5,33 @@ import { FaFemale, FaMale } from 'react-icons/fa';
 
 
 const User = ({
-	profile: {
-		user: { _id, name, avatar },
-		nickname,
-		gender,
-		status,
-	},
+	profile: { user, nickname, gender, status },
 }) => {
 	return (
+        user && (
 		<div className="profile">
 			<div>
-				<img src={avatar} alt="" className="round-img" />
+				<img src={user.avatar} alt="" className="round-img" />
 			</div>
-			<div>
-				<h1>{name}</h1>
+
+			<div className='user-data'>
+				<h1>{user.name}</h1>
 				<p>
-                <i>Alias: {nickname}</i>
+                    <i>alias: {nickname}</i>
 				</p>
-				<p className="my-1">
+				<p >
+                    <span className='my-1'>
 					{gender && (
 						<span>	
 							{gender === 'male' ? <FaMale /> : <FaFemale />}
 						</span>
-					)}
-				</p>
+					)}</span>
+			    </p>
 			</div>
+       
 		</div>
-	);
+	)
+    )
 };
 
 User.propTypes = {

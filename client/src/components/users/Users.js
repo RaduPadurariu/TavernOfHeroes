@@ -15,8 +15,8 @@ const Users = ({ getAllProfiles, profile: { profiles, loading } }) => {
 				<Spinner />
 			) : (
 				<div className="container">
+                    <h1 className="large text-primary">Find Heroes</h1>
                     <div className="profile-container">
-                        <p className="lead text-dark">Find new heroes ...</p>
                         <div className="profiles">
                             {profiles.length > 0 ? (
                                 profiles.map((profile) => (
