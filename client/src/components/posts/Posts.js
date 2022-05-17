@@ -1,14 +1,16 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import Post from './Post';
 import { getPosts } from '../../actions/post';
+import { loadUser } from '../../actions/auth';
 
-const Posts = ({ getPosts, post: { posts, loading } }) => {
+const Posts = ({ loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
+        loadUser();
 		getPosts();
-	}, [getPosts]);
+	}, [getPosts, loadUser]);
 	return loading ? (
 		<Spinner />
 	) : (
@@ -26,6 +28,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 };
 
 Posts.propTypes = {
+    loadUser: PropTypes.func.isRequired,
 	getPosts: PropTypes.func.isRequired,
 	post: PropTypes.object.isRequired,
 };
@@ -34,4 +37,4 @@ const mapStateToProps = (state) => ({
 	post: state.post,
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { loadUser, getPosts })(Posts);

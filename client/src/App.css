@@ -480,7 +480,7 @@ button {
 }
 .post-btns {
 	display:flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 }
 .post .comment-count {
 	background: var(--light-color);

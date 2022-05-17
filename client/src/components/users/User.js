@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MdOutlineAccountCircle } from 'react-icons/md';
 import { FaFemale, FaMale } from 'react-icons/fa';
 
 
