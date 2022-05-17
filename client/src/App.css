@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
 	--primary-color: #2c1c14;
-	--dark-color: #182216;
+	--dark-color: #311e06;
 	--light-color: #d1c1a5;
 	--danger-color: #dc3545;
 	--success-color: #28a745;
@@ -407,19 +407,95 @@ button {
 /* user card */
 .round-img {
 	border-radius: 50%;
+	width:10rem;
 }
 
 .profile {
 	display: flex;
-	justify-content: center;
+	/* justify-content: center; */
 	/* grid-template-columns: 2fr 4fr 2fr; */
-	align-items: center;
+	/* align-items: center; */
 	grid-gap: 2rem;
 	padding: 1rem;
 	line-height: 1.8;
 	margin-bottom: 1rem;
+	background: var(--light-color);
+	border-radius: 20px;
+	color: var(--primary-color);
 }
 
+.profile .my-1 {
+	font-size: 2rem;
+}
+
+.profiles {
+	display:flex;
+	margin-top: 5rem;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+/* Posts Page */
+.post-form .post-form-header {
+	background: var(--primary-color);
+	/* padding: 0.5rem; */
+}
+.posts {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	background: var(--primary-color);
+	padding: 0.5rem 1rem;
+	margin:1px;
+	border-radius: 5px;
+}
+.post {
+	display: flex;
+	align-items: center;
+	background: var(--light-color);
+	border:1px solid var(--primary-color);
+	border-radius: 5px;
+}
+
+.post > div:first-child {
+	text-align: center;
+	flex:1;
+	margin:0 2rem;
+}
+
+.post > div:last-child {
+	flex:5;
+	margin-left: 1.5rem;
+}
+.post img {
+	width: 100px;
+}
+
+.post .my-1 {
+	font-family: 'helvetica';
+	/* font-size: 1.2rem; */
+	font-weight: lighter;
+}
+.posts .my-1 {
+	margin:0.1rem;
+}
+.post-btns {
+	display:flex;
+	justify-content: space-between;
+}
+.post .comment-count {
+	background: var(--light-color);
+	color: var(--primary-color);
+	padding: 0.1rem 0.2rem;
+	border-radius: 5px;
+	font-size: 0.8rem;
+	overflow:scroll;
+}
+
+.post .post-date {
+	color: var(--primary-color);
+	font-size: 0.8rem;
+	margin-top:1.5rem;
+}
 
 /* logo */
 

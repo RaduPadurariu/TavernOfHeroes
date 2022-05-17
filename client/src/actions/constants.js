@@ -20,9 +20,17 @@ export const LOGOUT = 'LOGOUT';
 
 // profiles
 export const GET_PROFILE = 'GET_PROFILE';
+export const GET_ALL_PROFILES = 'GET_ALL_PROFILES';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 
 // account
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
+
+// posts
+export const GET_POSTS = 'GET_POSTS';
+export const POST_ERROR = 'POST_ERROR';
+
+// likes
+export const GET_LIKES = 'UPDATE_LIKES';

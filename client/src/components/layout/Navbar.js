@@ -30,6 +30,11 @@ const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
 	const visitorLinks = (
 				<ul>
 					<li>
+						<Link to="/users">
+							<FiSearch /> Heroes
+						</Link>
+					</li>
+					<li>
 						<Link to="/posts">
 						<BiEditAlt /> Posts
 						</Link>
@@ -51,8 +56,8 @@ const Navbar = ({auth : {isAuthenticated, loading }, logout}) => {
 	const authLinks = (
 		<ul>
 			<li>
-				<Link to="/">
-					<FiSearch /> <span className="hide-sm"> Find new friends</span>
+				<Link to="/users">
+					<FiSearch /> <span className="hide-sm"> Heroes</span>
 				</Link>
 			</li>
 			<li>

@@ -1,5 +1,6 @@
 import {
 	GET_PROFILE,
+	GET_ALL_PROFILES,
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 } from '../actions/constants';
@@ -18,6 +19,8 @@ const profileState = (state = initialState, action) => {
 	switch (type) {
 		case GET_PROFILE:
 			return { ...state, profile: payload, loading: false };
+		case GET_ALL_PROFILES:
+			return { ...state, profiles: payload, loading: false };
 		case PROFILE_ERROR:
 			return { ...state, error: payload, profile: null, loading: false };
 		case CLEAR_PROFILE:
