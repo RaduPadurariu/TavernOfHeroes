@@ -11,7 +11,7 @@ const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
         if (auth.isAuthenticated) loadUser();
 		getPosts();
-	}, [getPosts, auth.isAuthenticated, loadUser, ]);
+	}, [getPosts, loadUser, ]);
 	return loading ? (
 		<Spinner />
 	) : (

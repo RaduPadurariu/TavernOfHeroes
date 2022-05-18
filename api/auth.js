@@ -6,7 +6,6 @@ import 'dotenv/config';
 
 import User from '../models/User.js';
 import auth from '../middleware/auth.js';
-import { response } from 'express';
 
 const router = express.Router();
 

@@ -32,7 +32,6 @@ const Post = ({
 							className="form my-1"
 							onSubmit={(e) => {
 								e.preventDefault();
-								console.log(_id, newTitle, newText);
 								updatePost(_id, { title: newTitle, text: newText });
 								// clear the form
 								setEditing(!isEditing);
@@ -90,7 +89,9 @@ const Post = ({
 									<button
 										type="button"
 										className="btn btn-primary"
-										onClick={() => unLike(_id)}
+										onClick={() => {
+											unLike(_id);
+										}}
 									>
 										<AiFillDislike />
 									</button>

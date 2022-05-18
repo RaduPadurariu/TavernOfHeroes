@@ -14,8 +14,6 @@ const EditProfile = ({
 		nickname: '',
 		gender: '',
 		status: '',
-		phoneNumber: '',
-		city: '',
 	});
 
 	useEffect(() => {
@@ -28,9 +26,9 @@ const EditProfile = ({
 				status: loading || !profile.status ? '' : profile.status,
 			});
 		}
-	}, [getCurrentUserProfile, loading, profile]);
+	}, [getCurrentUserProfile, loading]);
 
-	const { phoneNumber, city, status, gender, nickname } = formData;
+	const { status, gender, nickname } = formData;
 
 	const changeHandler = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -76,27 +74,9 @@ const EditProfile = ({
                             />
                             <small className="form-text">Single, Married ...</small>
                         </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                placeholder="City"
-                                name="city"
-                                value={city}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                placeholder="Phone Number"
-                                name="phoneNumber"
-                                value={phoneNumber}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </div>
-
+                    
                         <input type="submit" className="btn btn-primary my-1" />
-                        <Link to="posts" className="btn btn-light my-1">
+                        <Link to="/account" className="btn btn-light my-1">
                             Go Back
                         </Link>
                     </form>

@@ -59,7 +59,6 @@ export const updatePost = (postId, formData) => async (dispatch) => {
 				'Content-Type': 'application/json',
 			},
 		};
-		console.log(formData, postId, config);
 		const response = await axios.put(`/api/posts/${postId}`, formData, config);
 		dispatch({
 			type: UPDATE_POST,

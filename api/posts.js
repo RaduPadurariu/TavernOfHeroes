@@ -76,7 +76,7 @@ router.get('/:post_id', auth, async (req, res) => {
 		if (error.kind == 'ObjectId') {
 			return res.status(404).json({ msg: 'Post not found' });
 		}
-		response.status(500).send('Server error');
+		res.status(500).send('Server error');
 	}
 });
 
