@@ -366,7 +366,7 @@ ul {
 
 /* Forms */
 .form .form-group {
-	margin: 1.2rem;
+	margin: 1.2rem 0;
 }
 
 .form .form-text {

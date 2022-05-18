@@ -39,7 +39,7 @@ const EditProfile = ({
 	};
 	return (
 		<div className="container">
-                <h1 className="large text-dark">Edit Your Profile</h1>
+                <h1 className="large text-primary">Edit Your Profile</h1>
                 <div className='secondary-container'>
                     <form className="form" onSubmit={(e) => submitHandler(e)}>
                         <div className="form-group">
