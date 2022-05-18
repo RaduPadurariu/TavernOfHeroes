@@ -49,7 +49,7 @@ export const register =
 
     // user loaded
 export const loadUser = () => async (dispatch) => {
-	console.log(localStorage.token);
+	
 	if (localStorage.token) {
 		setAuthToken(localStorage.token);
 	}

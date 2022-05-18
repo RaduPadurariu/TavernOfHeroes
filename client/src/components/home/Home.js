@@ -32,7 +32,7 @@ const Home = ({
 				<Fragment>
 					{profile !== null ? (
 						<Fragment>
-							<Link to="/edit-profile" className="btn btn-dark">
+							<Link to="/edit-profile" className="btn btn-primary">
 								<FiEdit /> Edit Profile
 							</Link>
 							<button className="btn btn-danger" onClick={() => deleteAccount()}>
@@ -42,7 +42,7 @@ const Home = ({
 						</Fragment>
 					) : (
 						<Fragment>
-							<Link to="/create-profile" className="btn btn-dark">
+							<Link to="/create-profile" className="btn btn-primary">
 								<IoAddCircleOutline />
 								Create Profile
 							</Link>

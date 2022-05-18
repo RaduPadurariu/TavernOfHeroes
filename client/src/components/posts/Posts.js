@@ -11,7 +11,7 @@ const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
         if (auth.isAuthenticated) loadUser();
 		getPosts();
-	}, [getPosts, loadUser]);
+	}, [getPosts, auth.isAuthenticated, loadUser, ]);
 	return loading ? (
 		<Spinner />
 	) : (
@@ -19,7 +19,7 @@ const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
            
 			<div className="posts">
                 <div>
-                    <h1 className="largey text-primary">Posts</h1>
+                    <h1 className="large text-primary">Posts</h1>
                 </div>  
 				<PostInput />     
 				{posts.map((post) => (
