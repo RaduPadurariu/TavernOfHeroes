@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
 	ADD_POST,
 	GET_POSTS,
-    UPDATE_POST,
+	UPDATE_POST,
 	POST_ERROR,
 	DELETE_POST,
 	UPDATE_LIKES,
@@ -32,16 +32,15 @@ export const addPost = (formData) => async (dispatch) => {
 	}
 };
 
-
 // get all posts
 export const getPosts = () => async (dispatch) => {
 	try {
 		const response = await axios.get('/api/posts');
-        dispatch({
+		dispatch({
 			type: GET_POSTS,
 			payload: response.data,
 		});
-    } catch (error) {
+	} catch (error) {
 		dispatch({
 			type: POST_ERROR,
 			payload: {
@@ -67,7 +66,7 @@ export const updatePost = (postId, formData) => async (dispatch) => {
 			payload: response.data,
 		});
 	} catch (error) {
-        dispatch({
+		dispatch({
 			type: POST_ERROR,
 			payload: {
 				msg: error.response.statusText,
@@ -96,8 +95,6 @@ export const deletePost = (postId) => async (dispatch) => {
 	}
 };
 
-
-
 // add like
 export const addLike = (postId) => async (dispatch) => {
 	try {
@@ -118,7 +115,7 @@ export const addLike = (postId) => async (dispatch) => {
 	}
 };
 
-// unlike
+// un like
 export const unLike = (postId) => async (dispatch) => {
 	try {
 		const response = await axios.put(`/api/posts/unlike/${postId}`);

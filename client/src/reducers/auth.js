@@ -31,7 +31,7 @@ const authState = (state = initialState, action) => {
 		case ACCOUNT_DELETED:
 			localStorage.removeItem('token');
 			return { ...state, token: null, isAuthenticated: false, loading: false };
-            case USER_LOADED:
+        case USER_LOADED:
 			return { ...state, isAuthenticated: true, loading: false, user: payload };
 		default:
 			return state;

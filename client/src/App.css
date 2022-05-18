@@ -28,6 +28,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow: auto;
 }
 
 /* Navbar */
@@ -130,7 +131,6 @@ body {
 .container {
 	width: 800px;
 	margin: auto;
-	overflow: hidden;
 	/* padding: 2.5rem 5rem; */
 	/* margin-top: 6rem; */
 	/* margin-bottom: 3rem; */
@@ -365,7 +365,7 @@ ul {
 
 /* Forms */
 .form .form-group {
-	margin: 1.2rem 0;
+	margin: 1.2rem;
 }
 
 .form .form-text {
@@ -407,11 +407,11 @@ button {
 /* user card */
 .round-img {
 	border-radius: 50%;
-	width:10rem;
 }
 
 .img-small {
 	width: 30px;
+	height:30px;
 }
 
 .profile {
@@ -446,14 +446,20 @@ button {
 
 /* Posts Page */
 
+.post-container {
+	width: 900px;
+	
+}
+
 .posts {
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
 	background: var(--primary-color);
 	padding: 0.5rem 1rem;
-	margin:1px;
+	margin:0.1rem;
 	border-radius: 5px;
+	
 }
 .post {
 	display: flex;
@@ -461,6 +467,8 @@ button {
 	background: var(--light-color);
 	border:1px solid var(--primary-color);
 	border-radius: 5px;
+	max-height: 700px;
+	margin: 0.1rem;
 }
 
 .post-input {
@@ -478,42 +486,34 @@ button {
 
 .post > div:first-child {
 	text-align: center;
-	flex:1;
-	margin:0 2rem;
+	/* flex:1; */
+	margin:0rem 2rem;
 }
 
 .post > div:last-child {
-	flex:5;
+	/* flex:5; */
 	margin-left: 1.5rem;
+	margin-top: 0.5rem;
 }
 .post img {
 	width: 100px;
 }
 
-.post .my-1 {
-	font-family: 'helvetica';
-	/* font-size: 1.2rem; */
-	font-weight: lighter;
-}
-.posts .my-1 {
-	margin:0.1rem;
-}
 
 .post-components {
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height:170px;
-	margin:0.3rem 0.6rem;
+	width:100%;
 }
-
-.my-1 {
-	overflow:auto;
+.post-content {
+	overflow: auto;
 }
 .post-btns {
 	display:flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
+	margin-top: 2rem;
 }
 .post .comment-count {
 	background: var(--light-color);
@@ -521,7 +521,6 @@ button {
 	/* padding: 0.1rem 0.2rem; */
 	border-radius: 5px;
 	font-size: 0.8rem;
-	overflow:scroll;
 }
 
 .post .post-date {

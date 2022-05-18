@@ -82,7 +82,7 @@ router.post(
 				}
 			);
 		} catch (error) {
-			console.log(error.message);
+			// console.log(error.message);
 			response.status(500).send('Server error');
 		}
 	}

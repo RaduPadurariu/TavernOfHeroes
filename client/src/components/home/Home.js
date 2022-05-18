@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteAccount, getCurrentUserProfile } from '../../actions/profile';
+import { deleteAccount, getCurrentUserProfile} from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import { loadUser } from '../../actions/auth';
 import { CgHello } from 'react-icons/cg';
@@ -20,7 +20,7 @@ const Home = ({
     useEffect(() => {
 		loadUser();
 		getCurrentUserProfile();
-	}, [getCurrentUserProfile, loadUser]);
+	}, [loadUser, getCurrentUserProfile]);
 	return loading ? (
 		<Spinner />
 	) : (

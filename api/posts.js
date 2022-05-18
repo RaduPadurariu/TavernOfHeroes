@@ -24,7 +24,7 @@ router.post(
 
 		try {
 			const user = await User.findById(req.user.id).select('-password');
-			const post = new Post({
+			const newPost = new Post({
 				title: req.body.title,
 				text: req.body.text,
 				name: user.name,
@@ -32,10 +32,8 @@ router.post(
 				user: req.user.id,
 			});
 
-			console.log('post = ', post);
-
-			const newPost = await post.save();
-			return res.status(201).json({ post: newPost });
+			const post = await newPost.save();
+			res.json(post);
 		} catch (error) {
 			console.error(error.message);
 			res.status(500).send('Posts error');

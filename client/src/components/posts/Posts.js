@@ -11,16 +11,17 @@ const Posts = ({ auth, loadUser, getPosts, post: { posts, loading } }) => {
 	useEffect(() => {
         if (auth.isAuthenticated) loadUser();
 		getPosts();
-	}, [getPosts, loadUser, auth.isAuthenticated]);
+	}, [getPosts, loadUser]);
 	return loading ? (
 		<Spinner />
 	) : (
-		<div className="container">
-            <PostInput />
+		<div className="container post-container">
+           
 			<div className="posts">
                 <div>
-                        <p className="lead text-primary">Posts</p>
-                </div>       
+                    <h1 className="largey text-primary">Posts</h1>
+                </div>  
+				<PostInput />     
 				{posts.map((post) => (
 					<Post key={post._id} post={post} />
 				))}

@@ -12,19 +12,19 @@ const Post = ({
     updatePost,
     deletePost,
 	auth,
-	post: { _id, title, text, name, avatar, user, likes, comments, date },
+	post: { _id, title, text, name, avatar, user, likes, date },
 }) => {
 	const [newTitle, setTitle] = useState(title);
 	const [newText, setText] = useState(text);
 	const [isEditing, setEditing] = useState(false);
 	return (
-		<div className="post p-1 my-1">
+		<div className="post p-1">
 		<div>
 				<img className="round-img" src={avatar} alt="" />
 				<h4>{name}</h4>
 		</div>
 
-		<div className='post-comments'>
+		<div className='post-components'>
 				{isEditing ? (
 					<Fragment>
 						{' '}
@@ -68,56 +68,64 @@ const Post = ({
 					</Fragment>
 				) : (
 					<Fragment>
-						<h4 className="my-1 wrap-text">{newTitle}</h4>
-						<div className="my-1 wrap-text">{newText}</div>
+						<h2 className="my py wrap-text post-content" >{newTitle}</h2>
+						<div className="my py wrap-text post-content">{newText}</div>
+						
 					</Fragment>
 				)}
-				{auth.isAuthenticated && !auth.loading && (
-					<Fragment>
-						<button
-							type="button"
-							className="btn btn-light"
-							onClick={() => {
-								addLike(_id);
-							}}
-						>
-							<AiFillLike />
-							<span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-						</button>
-						<button
-							type="button"
-							className="btn btn-light"
-							onClick={() => unLike(_id)}
-						>
-							<AiFillDislike />
-						</button>
-						{user === auth.user._id && (
-							<Fragment>
-								<button
-									onClick={(e) => setEditing(!isEditing)}
-									type="button"
-									className="btn btn-primary"
-								>
-									<MdOutlineEdit />
-									Edit
-								</button>
-								<button
-									onClick={() => deletePost(_id)}
-									type="button"
-									className="btn btn-danger"
-								>
-									<MdOutlineDelete />
-									Delete
-								</button>
-								
-							</Fragment>
+				<div className="post-btns">
+					{auth.isAuthenticated && !auth.loading && (
+						<Fragment>
+								<div>
+									<button
+										type="button"
+										className="btn btn-primary"
+										onClick={() => {
+											addLike(_id);
+										}}
+									>
+										<AiFillLike />
+										<span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+									</button>
+									<button
+										type="button"
+										className="btn btn-primary"
+										onClick={() => unLike(_id)}
+									>
+										<AiFillDislike />
+									</button>
+									{user === auth.user._id && (
+										<Fragment>
+											<button
+												onClick={(e) => setEditing(!isEditing)}
+												type="button"
+												className="btn btn-primary"
+											>
+												<MdOutlineEdit />
+												Edit
+											</button>
+											<button
+												onClick={() => deletePost(_id)}
+												type="button"
+												className="btn btn-danger"
+											>
+												<MdOutlineDelete />
+												Delete
+											</button>
+											
+										</Fragment>
+										
+									)}
+								</div>
 							
-						)}
-						<p className="post-date">
-							Posted on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment>
-						</p>
-					</Fragment>
-				)}
+						</Fragment>
+					)}
+					<p className="post-date">
+						Posted on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment>
+					</p>
+
+				</div>
+			
 			</div>
 		</div>
 );};

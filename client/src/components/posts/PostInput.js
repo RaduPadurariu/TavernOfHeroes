@@ -43,7 +43,7 @@ const PostInput = ({ auth, addPost }) => {
 						></textarea>
 						<input
 							type="submit"
-							className="btn btn-primary my-1"
+							className="btn btn-primary m-1"
 							value="Post"
 						/>
 					</form>
