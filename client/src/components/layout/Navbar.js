@@ -30,6 +30,11 @@ const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 	const visitorLinks = (
 				<ul>
 					<li>
+						<Link to="/users">
+						<FiSearch /> <span className="hide-sm"> Heroes</span>
+						</Link>
+					</li>
+					<li>
 						<Link to="/posts">
 						<BiEditAlt />
 						<span className="hide-sm">Posts</span>
