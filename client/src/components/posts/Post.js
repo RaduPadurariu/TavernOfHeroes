@@ -70,9 +70,6 @@ const Post = ({
 					<Fragment>
 						<h4 className="my-1 wrap-text">{newTitle}</h4>
 						<div className="my-1 wrap-text">{newText}</div>
-						<p className="post-date">
-							Posted on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment>
-						</p>
 					</Fragment>
 				)}
 				{auth.isAuthenticated && !auth.loading && (
@@ -112,8 +109,13 @@ const Post = ({
 									<MdOutlineDelete />
 									Delete
 								</button>
+								
 							</Fragment>
+							
 						)}
+						<p className="post-date">
+							Posted on <Moment format="YYYY/MM/DD HH:mm">{date}</Moment>
+						</p>
 					</Fragment>
 				)}
 			</div>
