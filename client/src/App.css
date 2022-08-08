@@ -148,10 +148,12 @@ body {
 }
 /* Footer */
 .footer {
-	color: var(--light-color);
 	text-align: center;
 	padding:10px;
+}
 
+.footer-link {
+	color: var(--light-color);
 }
 
 /* Alert */

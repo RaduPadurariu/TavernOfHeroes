@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
 import Landing from '../src/components/layout/Landing';
 import Register from './components/auth/Register';
@@ -50,7 +50,12 @@ const App = () => {
 						</Switch>
 						
 					</div>
-					<h3 className='footer'>@ copywrite 2022 - Radu Padurariu</h3>
+					<h3 className='footer'>
+						<NavLink to = {{ pathname: "https://radupadurariu.herokuapp.com" }} target="_blank" className="footer-link">@ copywrite 2022 - Radu Padurariu
+
+						</NavLink>
+						
+					</h3>
 					
 				</div>
 			</Router>
