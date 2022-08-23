@@ -722,6 +722,7 @@ button {
 	.post {
 		grid-template-columns: 1fr;
 		flex-direction: column;
+		padding: 2rem;
 	}
 
 	.post a,
