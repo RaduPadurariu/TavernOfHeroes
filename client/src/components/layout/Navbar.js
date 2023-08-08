@@ -31,7 +31,7 @@ const Navbar = ({auth : {isAuthenticated, loading, user }, logout}) => {
 				<ul>
 					<li>
 						<Link to="/users">
-						<FiSearch /> <span className="hide-sm"> Heroes</span>
+						<FiSearch /> <span className="hide-sm">Heroes</span>
 						</Link>
 					</li>
 					<li>

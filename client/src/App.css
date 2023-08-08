@@ -13,9 +13,17 @@
 	padding: 0;
 }
 
+@font-face {
+    font-family: 'papyrus';
+    src: url("./fonts/papyrus.ttf");
+}
+
+:root {
+    --primaryFont: 'papyrus', verdana, sans-serif;
+}
 
 body {
-	font-family: Copperplate, Papyrus, fantasy;
+	font-family: var(--primaryFont);
 	line-height: 1.6;
 	font-size: 1rem;
 	color: #333;
