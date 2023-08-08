@@ -66,6 +66,8 @@ body {
 	color: var(--light-color);
 	padding: 0.45rem;
 	margin: 0 0.25rem;
+	display: flex;
+	align-items: center;
 }
 
 .navbar ul a:hover {
@@ -689,7 +691,7 @@ button {
 	.navbar {
 		text-align: center;
 		margin: 0;
-		padding: 0;
+		
 	}
 
 	.navbar ul {
