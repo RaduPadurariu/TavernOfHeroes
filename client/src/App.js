@@ -51,7 +51,7 @@ const App = () => {
 						
 					</div>
 					<h3 className='footer'>
-						<NavLink to = {{ pathname: "https://radupadurariu.herokuapp.com" }} target="_blank" className="footer-link">@ copywrite 2022 - Radu Padurariu
+						<NavLink to = {{ pathname: "https://radupadurariu.herokuapp.com" }} title="Contact - radupadurariu.herokuapp.com" target="_blank" className="footer-link">@ copywrite 2022 - Radu Padurariu
 
 						</NavLink>
 						
